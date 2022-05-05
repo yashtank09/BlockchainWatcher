@@ -1,0 +1,22 @@
+INFURA - https://infura.io/dashboard/ethereum/78371715113f4bdd946518414b9de62e/settings
+
+    - Infura provides the tools and infrastructure that allow developers to easily take their blockchain application from testing to scaled deployment - with simple, reliable access to Ethereum and IPFS.
+
+Web3 - https://web3py.readthedocs.io/en/stable/index.html
+
+    - module used for interacting with Ethereum
+    - It’s commonly found in decentralized apps (dapps) to help with sending transactions, interacting with smart contracts, reading block data, and a variety of other use cases.
+    - The original API was derived from the Web3.js Javascript API, but has since evolved toward the needs and creature comforts of Python developers.
+
+Metamask - moz-extension://f961eba1-5762-4501-8618-06d93ce2acd4/home.html#unlock
+
+    - MetaMask is a software cryptocurrency wallet used to interact with the Ethereum blockchain. It allows users to access their Ethereum wallet through a browser extension or mobile app, which can then be used to interact with decentralized applications.
+
+Ganache - https://trufflesuite.com/ganache/
+
+    - This is platfrom for developers to testing with cryptocurrency/Ethereums 
+
+FUSE: https://docs.appimage.org/user-guide/troubleshooting/fuse.html [Tool for running apps on Ubuntu]
+Referance Links:
+- https://www.quicknode.com/guides/web3-sdks/how-to-generate-a-new-ethereum-address-in-python
+- https://web3py.readthedocs.io/en/stable/web3.main.html#providers
