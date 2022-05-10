@@ -1,32 +1,35 @@
-import time
+# import mysql.connector
 from web3 import Web3
 
-# Connect to Ganache Access
-ganace_URL = "http://127.0.0.1:7545"
-web3 = Web3(Web3.HTTPProvider(ganace_URL))
-# print(Web3.isConnected())
 
-Acc_1 = "0x6f7bB93CF132D57C21694025AE73D73afDa7D9B1"
-Acc_2 = "0x686F826DcB0E1F2F9475775BE430952F10b2e04D"
+cnx = mysql.connector.connect(user='localhost', password='aBC@123.', host='127.0.0.1', database='blockchainwatcher')
+coursor = cnx.cursor()
 
-Private_key = "b687f5bbeadf633daa84901e29b58cc37f61feeea8a518ff2a7b9780df39a788"
+Infura_URL = "https://mainnet.infura.io/v3/78371715113f4bdd946518414b9de62e"
 
-# get the nance
-nance = web3.eth.getTransactionCount(Acc_1)
+web3Content = Web3(Web3.HTTPProvider(Infura_URL))
 
-# Buld transaction
-tx = {
-    'nonce': nance,
-    'to': Acc_2,
-    'value': web3.toWei(1, 'ether'),
-    'gas': 2000000,
-    'gasPrice': web3.toWei('50', 'gwei'),
-}
-# sign Transaction
-Sign_Trans = web3.eth.account.signTransaction(tx, Private_key)
+addTransactions = ("INSERT INTO Transactions ""(id, Transaction_Hash, FromAddress, ToAddress, Amount) ""VALUES (%s, %s, %s, %s)")
 
-# send transaction
-tnx_hash = web3.eth.sendRawTransaction(Sign_Trans.rawTransaction)
-print(tnx_hash)
-print(web3.toHex(tnx_hash))
-# get transaction
+# ID
+BlockNum = web3Content.eth.block_number
+
+# Transaction_Hash
+Transact_ID = '0x370831e79f96aba0e926d9d29df1f7b2c357c54536574517990949797054e2e5' # Tnx_Hash
+Tnx_Data = web3Content.eth.getTransaction(Transact_ID)
+
+# FromAddress
+FromAddress = Tnx_Data['from']
+
+# ToAddress
+ToAddress = Tnx_Data['to']
+
+# Amount
+Amount = Tnx_Data['value']
+
+addTransactionDetails = (BlockNum, Transact_ID, FromAddress, ToAddress, Amount)
+
+coursor.execute(addTransactions, addTransactionDetails)
+cnx.commit()
+
+cnx.close()
